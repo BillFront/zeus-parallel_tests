@@ -55,7 +55,9 @@ module Zeus
         if spec_file?(argv) && defined?(RSpec)
           # disable autorun in case the user left it in spec_helper.rb
           RSpec::Core::Runner.disable_autorun!
-          exit RSpec::Core::Runner.run(argv)
+          c = RSpec::Core::Runner.run(argv)
+          puts "test: #{c.inspect}"
+          exit c
         else
           Zeus::M.run(argv)
         end
@@ -86,7 +88,6 @@ module Zeus
       end
 
       def spawn_slave
-        at_exit { binding.pry }
         worker, workers_count, args_file = ARGV
         puts "spawn_slave: #{[worker, workers_count, args_file].inspect}"
         # Parallels spec reuse main test db instead of db with "1" appended
