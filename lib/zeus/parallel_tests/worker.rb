@@ -22,8 +22,8 @@ module Zeus
 
       def spawn
         puts "spawn: #{%(zeus parallel_#{@suite}_worker #{parallel_tests_attributes}).inspect}"
-        system %(zeus parallel_#{@suite}_worker #{parallel_tests_attributes})
-        puts "spawn result: #{$CHILD_STATUS.to_i}"
+        x = system %(zeus parallel_#{@suite}_worker #{parallel_tests_attributes})
+        puts "spawn result: #{x.inspect} #{$CHILD_STATUS.to_i}"
         args_file.unlink
         $CHILD_STATUS.to_i
       end
