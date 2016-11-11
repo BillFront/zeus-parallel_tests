@@ -45,6 +45,7 @@ module Zeus
       end
 
       def parallel_rspec_worker
+        puts "parallel_rspec_worker"
         spawn_slave { |args| test(args) }
       end
 
