@@ -87,6 +87,7 @@ module Zeus
 
       def spawn_slave
         worker, workers_count, args_file = ARGV
+        puts "spawn_slave: #{[worker, workers_count, args_file].inspect}"
         # Parallels spec reuse main test db instead of db with "1" appended
         ENV['TEST_ENV_NUMBER'] = test_env_number = (worker == '1' ? nil : worker)
         ENV['PARALLEL_TEST_GROUPS'] = workers_count
