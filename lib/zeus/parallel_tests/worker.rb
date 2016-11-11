@@ -20,7 +20,7 @@ module Zeus
       end
 
       def spawn
-        p caller
+        pp caller
         puts "spawn: #{%(zeus parallel_#{@suite}_worker #{parallel_tests_attributes}).inspect}"
         system %(zeus parallel_#{@suite}_worker #{parallel_tests_attributes})
         args_file.unlink
