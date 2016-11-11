@@ -96,7 +96,7 @@ module Zeus
 
         reconfigure_activerecord test_env_number
 
-        yield load_args_from_file(args_file)
+        (yield load_args_from_file(args_file)).tap { |x| puts "spawn_slave result: #{x.inspect}" }
       end
 
       def load_args_from_file(path)
