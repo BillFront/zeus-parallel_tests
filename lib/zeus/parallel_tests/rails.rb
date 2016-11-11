@@ -46,7 +46,7 @@ module Zeus
 
       def parallel_rspec_worker
         puts "parallel_rspec_worker"
-        spawn_slave { |args| test(args) }
+        spawn_slave { |args| test(args) }.tap {|x| puts "parallel_rspec_worker result: #{x.inspect}"}
       end
 
       # Patches required in Zeus
