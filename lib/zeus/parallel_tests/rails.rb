@@ -36,6 +36,7 @@ module Zeus
         argv = ARGV.dup
         argv.delete('--color')  # remove this argument from list
         argv.delete('--colour') # because it was causing bug #14
+        p [parallel_runner_command "rspec", argv]
         exec parallel_runner_command 'rspec', argv
       end
 
