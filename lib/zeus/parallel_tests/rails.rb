@@ -57,7 +57,7 @@ module Zeus
           c = RSpec::Core::Runner.run(argv)
           puts "parent process: #{`ps -p #{Process.pid}`}"
           puts "test: #{c.inspect}"
-          c
+          exit!(c)
         else
           Zeus::M.run(argv)
         end
