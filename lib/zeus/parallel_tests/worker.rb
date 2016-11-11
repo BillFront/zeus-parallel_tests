@@ -1,5 +1,6 @@
 require_relative '../parallel_tests'
 require 'tempfile'
+require "pp"
 
 module Zeus
   module ParallelTests
