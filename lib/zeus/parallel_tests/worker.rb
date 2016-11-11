@@ -24,6 +24,7 @@ module Zeus
         puts "spawn: #{%(zeus parallel_#{@suite}_worker #{parallel_tests_attributes}).inspect}"
         system %(zeus parallel_#{@suite}_worker #{parallel_tests_attributes})
         args_file.unlink
+        puts "spawn result: #{$CHILD_STATUS.to_i}"
         $CHILD_STATUS.to_i
       end
 
@@ -53,4 +54,8 @@ module Zeus
   end
 end
 
-exit Zeus::ParallelTests::Worker.run(ARGV, ENV) if $PROGRAM_NAME == __FILE__
+if $PROGRAM_NAME == __FILE__
+  x = Zeus::ParallelTests::Worker.run(ARGV, ENV)
+  puts "exit: #{x.inspect}"
+  exit x
+end
