@@ -86,6 +86,7 @@ module Zeus
       end
 
       def spawn_slave
+        at_exit { binding.pry }
         worker, workers_count, args_file = ARGV
         puts "spawn_slave: #{[worker, workers_count, args_file].inspect}"
         # Parallels spec reuse main test db instead of db with "1" appended
