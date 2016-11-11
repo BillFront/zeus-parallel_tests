@@ -55,6 +55,7 @@ module Zeus
           # disable autorun in case the user left it in spec_helper.rb
           RSpec::Core::Runner.disable_autorun!
           c = RSpec::Core::Runner.run(argv)
+          puts "parent process: #{`ps -p #{Process.pid}`}"
           puts "test: #{c.inspect}"
           exit c
         else
